@@ -1,0 +1,778 @@
+/* ========== VARIABLES ET RESET ========== */
+:root {
+    /* Palette de couleurs principale */
+    --primary: #007AFF;
+    --primary-dark: #0056CC;
+    --secondary: #5856D6;
+    --accent: #FF2D55;
+    --success: #34C759;
+    --warning: #FF9500;
+    --danger: #FF3B30;
+    
+    /* Couleurs de fond */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F2F2F7;
+    --bg-tertiary: #E5E5EA;
+    
+    /* Couleurs de texte */
+    --text-primary: #000000;
+    --text-secondary: #8E8E93;
+    --text-tertiary: #C7C7CC;
+    
+    /* Bordures et séparateurs */
+    --border: #C6C6C8;
+    --separator: #E5E5EA;
+    
+    /* Rayons de bordure */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    
+    /* Ombres */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+    --shadow-lg: 0 16px 32px rgba(0,0,0,0.15);
+}
+
+/* Reset global pour tous les éléments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+/* ========== STYLES DU BODY ========== */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;
+    color: var(--text-primary);
+    line-height: 1.5;
+    overflow-x: hidden;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+/* ========== ANNONCE D'ENTRÉE ========== */
+/* L'annonce couvre tout l'écran et se place au-dessus de tout le contenu */
+.annonce-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Z-index très élevé pour être au-dessus de tout */
+    backdrop-filter: blur(5px); /* Effet de flou sur le contenu derrière */
+}
+
+/* Conteneur de l'annonce avec l'image */
+.annonce-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    animation: scaleIn 0.3s ease-out; /* Animation d'apparition */
+}
+
+/* Animation d'apparition de l'annonce */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Style de l'image de l'annonce */
+.annonce-image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain; /* Garde les proportions de l'image */
+    display: block;
+}
+
+/* Bouton de fermeture rouge */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    background: var(--danger); /* Rouge */
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10; /* Au-dessus de l'image */
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Effets au survol du bouton fermer */
+.close-btn:hover {
+    background: #ff1a1a; /* Rouge plus foncé */
+    transform: scale(1.1);
+}
+
+.close-btn:active {
+    transform: scale(0.95);
+}
+
+/* Classe pour cacher l'annonce quand elle est fermée */
+.annonce-overlay.hidden {
+    display: none;
+}
+
+/* ========== GESTION DES VIDÉOS ========== */
+/* Conteneur de la vidéo de fond - UNIQUEMENT dans la section hero */
+.hero .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place la vidéo derrière le contenu */
+    overflow: hidden;
+}
+
+/* Style des vidéos */
+.hero .video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que la vidéo couvre tout l'espace */
+}
+
+/* Par défaut, on affiche la vidéo pour mobile et on cache celle pour PC */
+.hero .desktop-video {
+    display: none;
+}
+
+.hero .mobile-video {
+    display: block;
+}
+
+/* Overlay sombre pour améliorer la lisibilité du texte */
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1; /* Entre la vidéo et le contenu */
+}
+
+/* ========== EN-TÊTE DE L'APPLICATION ========== */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--separator);
+    z-index: 1000; /* En dessous de l'annonce (9999) */
+    padding: 12px 16px;
+    backdrop-filter: blur(20px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 24px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.menu-btn:active {
+    background: var(--bg-secondary);
+}
+
+/* ========== CONTENU PRINCIPAL ========== */
+.app-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 16px 20px;
+}
+
+/* ========== SECTION HÉRO ========== */
+.hero {
+    position: relative;
+    padding: 40px 0;
+    text-align: center;
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Au-dessus de la vidéo et de l'overlay */
+}
+
+.welcome-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.accent {
+    color: var(--primary);
+}
+
+.hero-description {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 32px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.quick-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.number {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ========== BOUTONS ========== */
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn.secondary {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* ========== SECTIONS ========== */
+.section-header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 0 16px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-header p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== SECTION SPORTS ========== */
+.sports-section {
+    padding: 40px 0;
+    background: #ffffff;
+}
+
+.sports-grid {
+    display: grid;
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.sport-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    transition: all 0.2s ease;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.sport-card:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.sport-card.featured {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 247, 255, 0.95) 100%);
+}
+
+.sport-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.sport-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+}
+
+.sport-icon.tennis { background: var(--success); }
+.sport-icon.padel { background: var(--secondary); }
+.sport-icon.badminton { background: var(--accent); }
+.sport-icon.pingpong { background: var(--warning); }
+
+.sport-badge {
+    background: var(--accent);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.sport-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.sport-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.sport-features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.sport-features span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.sport-features i {
+    color: var(--success);
+    font-size: 12px;
+}
+
+.sport-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-btn:active {
+    background: var(--bg-tertiary);
+    transform: scale(0.95);
+}
+
+/* ========== SECTION ÉVÉNEMENTS ========== */
+.events-section {
+    padding: 40px 0;
+    background: #ffffff;
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 16px;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.event-item:active {
+    background: rgba(255, 255, 255, 0.85);
+    transform: scale(0.98);
+}
+
+.event-date {
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    min-width: 60px;
+}
+
+.day {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.month {
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-details h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.event-details p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.event-meta {
+    display: flex;
+    gap: 12px;
+}
+
+.event-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.event-action {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.event-action:active {
+    background: var(--primary-dark);
+    transform: scale(0.95);
+}
+
+/* ========== NAVIGATION INFÉRIEURE ========== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid var(--separator);
+    display: flex;
+    padding: 8px 16px;
+    z-index: 1000; /* En dessous de l'annonce */
+    backdrop-filter: blur(20px);
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    font-size: 10px;
+}
+
+.nav-item:active {
+    background: var(--bg-secondary);
+}
+
+.nav-item.active {
+    color: var(--primary);
+}
+
+.nav-item i {
+    font-size: 20px;
+}
+
+/* ========== DESIGN RESPONSIVE ========== */
+/* Pour les écrans de tablette et plus grands */
+@media (min-width: 768px) {
+    .app-main {
+        padding: 100px 24px 20px;
+    }
+    
+    .hero-title {
+        font-size: 40px;
+    }
+    
+    .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .btn {
+        width: auto;
+    }
+    
+    .sports-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0;
+    }
+    
+    .events-list {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .bottom-nav {
+        max-width: 1200px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        border: 1px solid var(--separator);
+        border-bottom: none;
+    }
+}
+
+/* Pour les écrans d'ordinateur */
+@media (min-width: 1024px) {
+    .sports-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Sur les grands écrans, on affiche la vidéo pour PC et on cache celle pour mobile */
+    .hero .desktop-video {
+        display: block;
+    }
+    
+    .hero .mobile-video {
+        display: none;
+    }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ========== CLASSES UTILITAIRES ========== */
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: 16px; }
+.p-4 { padding: 16px; }
+.w-full { width: 100%; }
+
+/* Styles supplémentaires pour les états de chargement */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.fa-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.sport-card {
+    cursor: pointer;
+}
+
+.sport-card:active {
+    background-color: var(--bg-secondary);
+}
+
+.lang-card:active,
+.event-item:active {
+    background-color: var(--bg-secondary);
+}
+
+/* Améliore les zones de toucher pour mobile */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+    }
+    
+    .nav-item {
+        min-height: 44px;
+    }
+    
+    input, select, textarea {
+        font-size: 16px; /* Empêche le zoom sur iOS */
+    }
+}

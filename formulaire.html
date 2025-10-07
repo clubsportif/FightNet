@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejoindre - FIGHT NET</title>
+    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-content">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <div class="logo-icon">🥊</div>
+                    <div class="logo-text">
+                        <span class="brand">FIGHT NET</span>
+                        <span class="subtitle">Rejoindre</span>
+                    </div>
+                </div>
+            </a>
+            <button class="menu-btn" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main">
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Devenez Membre</h1>
+                <p>Rejoignez notre communauté sportive</p>
+            </div>
+
+            <form class="app-form" id="membershipForm" action="https://formspree.io/f/xpwyjzvg" method="POST">
+                <!-- Informations Personnelles -->
+                <div class="form-section">
+                    <h3>Informations Personnelles</h3>
+                    
+                    <div class="input-group">
+                        <label for="fullName">Nom Complet *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Votre nom complet" required>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Téléphone *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="birthDate">Date de Naissance *</label>
+                        <input type="date" id="birthDate" name="birthDate" required>
+                    </div>
+                </div>
+
+                <!-- Sports Selection -->
+                <div class="form-section">
+                    <h3>Sports et Niveaux *</h3>
+                    <p class="section-description">Choisissez vos sports et votre niveau</p>
+
+                    <div class="sports-selection" id="sportsContainer">
+                        <!-- Sports will be loaded by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Availability -->
+                <div class="form-section">
+                    <h3>Disponibilités *</h3>
+                    <div class="input-group">
+                        <input type="text" id="availability" name="availability" placeholder="Ex: Soirs en semaine, week-ends" required>
+                    </div>
+                </div>
+
+                <!-- Summary & Submit -->
+                <div class="form-section">
+                    <h3>Résumé</h3>
+                    <div class="form-summary" id="formSummary">
+                        <p>Sélectionnez au moins un sport</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary full-width" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer ma candidature
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-dumbbell"></i>
+            <span>Sports</span>
+        </a>
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-calendar"></i>
+            <span>Événements</span>
+        </a>
+        <a href="formulaire.html" class="nav-item active">
+            <i class="fas fa-user-plus"></i>
+            <span>Rejoindre</span>
+        </a>
+    </nav>
+
+    <script src="js/form.js"></script>
+</body>
+</html>

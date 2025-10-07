@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIGHT NET</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ========== ANNONCE D'ENTRÉE ========== -->
+    <!-- Cette annonce s'affiche au chargement de la page et se place par-dessus tout le contenu -->
+    <div id="annonce-entree" class="annonce-overlay">
+        <div class="annonce-container">
+            <!-- Bouton de fermeture avec une croix rouge -->
+            <button id="close-annonce" class="close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- Image de l'annonce -->
+            <img src="fightnet.jpg" alt="Fight Net Annonce" class="annonce-image">
+        </div>
+    </div>
+
+    <!-- ========== EN-TÊTE DE L'APPLICATION ========== -->
+    <header class="app-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🥊</div>
+                <div class="logo-text">
+                    <span class="brand">FIGHT NET</span>
+                    <span class="subtitle">Sports Club</span>
+                </div>
+            </div>
+            <button class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== CONTENU PRINCIPAL ========== -->
+    <!-- Tout ce contenu sera visible MAIS derrière l'annonce au début -->
+    <main class="app-main">
+        <!-- Section Hero avec vidéo de fond -->
+        <section class="hero">
+            <div class="video-background">
+                <!-- Vidéo pour PC (affichée sur les grands écrans) -->
+                <video autoplay muted loop playsinline class="desktop-video">
+                    <source src="vidioims2.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas les vidéos HTML5.
+                </video>
+                <!-- Vidéo pour mobile (affichée sur les petits écrans) -->
+                <video autoplay muted loop playsinline class="mobile-video">
+                    <source src="vidioims1.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas les vidéos HTML5.
+                </video>
+            </div>
+            <div class="overlay"></div>
+            
+            <div class="hero-content">
+                <div class="welcome-badge">
+                    <span>Bienvenue</span>
+                </div>
+                <h1 class="hero-title">
+                    Rejoignez le<br>
+                    <span class="accent">Club Sportif</span>
+                </h1>
+                <p class="hero-description">
+                    Tennis, Padel, Badminton & Ping-Pong dans une communauté dynamique
+                </p>
+                
+                <div class="quick-stats">
+                    <div class="stat">
+                        <div class="number">10+</div>
+                        <div class="label">Membres</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">4</div>
+                        <div class="label">Sports</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">98%</div>
+                        <div class="label">Satisfaction</div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="formulaire.html" class="btn primary">
+                        <i class="fas fa-user-plus"></i>
+                        Rejoindre maintenant
+                    </a>
+                    <a href="#sports" class="btn secondary">
+                        <i class="fas fa-play"></i>
+                        Découvrir
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECTION SPORTS ========== -->
+        <section id="sports" class="sports-section">
+            <div class="section-header">
+                <h2 style="color: black;">Nos Sports</h2>
+                <p style="color: black;">Choisissez votre discipline</p>
+            </div>
+
+            <div class="sports-grid">
+                <!-- Carte Tennis -->
+                <div class="sport-card">
+                    <div class="sport-header">
+                        <div class="sport-icon tennis">
+                            <i class="fas fa-baseball-ball"></i>
+                        </div>
+                        <div class="sport-badge">Populaire</div>
+                    </div>
+                    <h3>Tennis</h3>
+                    <p>Perfectionnez votre jeu avec nos experts</p>
+                    <div class="sport-features">
+                        <span><i class="fas fa-check"></i> Tournois réguliers</span>
+                        <span><i class="fas fa-check"></i> Ambiance fun</span>
+                        <span><i class="fas fa-check"></i> Équipement pro</span>
+                        <span><i class="fas fa-check"></i> Développe ta technique</span>
+                    </div>
+                    <div class="sport-footer">
+                        <span class="price">Rejoindre maintenant</span>
+                        <a href="formulaire.html">
+                        <button class="action-btn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte Padel (mise en avant) -->
+                <div class="sport-card featured">
+                    <div class="sport-header">
+                        <div class="sport-icon padel">
+                            <i class="fas fa-square"></i>
+                        </div>
+                        <div class="sport-badge">Nouveau</div>
+                    </div>
+                    <h3>Padel</h3>
+                    <p>Sport moderne et convivial</p>
+                    <div class="sport-features">
+                        <span><i class="fas fa-check"></i> Tournois réguliers</span>
+                        <span><i class="fas fa-check"></i> Ambiance fun</span>
+                        <span><i class="fas fa-check"></i> Équipement pro</span>
+                        <span><i class="fas fa-check"></i> Développe ta technique</span>
+                    </div>
+                    <div class="sport-footer">
+                        <span class="price">Rejoindre maintenant</span>
+                        <a href="formulaire.html">
+                        <button class="action-btn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte Badminton -->
+                <div class="sport-card">
+                    <div class="sport-header">
+                        <div class="sport-icon badminton">
+                            <i class="fas fa-feather-alt"></i>
+                        </div>
+                    </div>
+                    <h3>Badminton</h3>
+                    <p>Vitesse et précision</p>
+                    <div class="sport-features">
+                        <span><i class="fas fa-check"></i> Tournois réguliers</span>
+                        <span><i class="fas fa-check"></i> Ambiance fun</span>
+                        <span><i class="fas fa-check"></i> Équipement pro</span>
+                        <span><i class="fas fa-check"></i> Développe ta technique</span>
+                    </div>
+                    <div class="sport-footer">
+                        <span class="price">Rejoindre maintenant</span>
+                        <a href="formulaire.html">
+                        <button class="action-btn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte Ping-Pong -->
+                <div class="sport-card">
+                    <div class="sport-header">
+                        <div class="sport-icon pingpong">
+                            <i class="fas fa-table-tennis"></i>
+                        </div>
+                    </div>
+                    <h3>Ping-Pong</h3>
+                    <p>Réflexes et technique</p>
+                    <div class="sport-features">
+                        <span><i class="fas fa-check"></i> Tournois réguliers</span>
+                        <span><i class="fas fa-check"></i> Ambiance fun</span>
+                        <span><i class="fas fa-check"></i> Équipement pro</span>
+                        <span><i class="fas fa-check"></i> Développe ta technique</span>
+                    </div>
+                    <div class="sport-footer">
+                        <span class="price">Rejoindre maintenant</span>
+                        <a href="formulaire.html">
+                        <button class="action-btn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECTION ÉVÉNEMENTS ========== -->
+        <section id="events" class="events-section">
+            <div class="section-header">
+                <h2 style="color: black;">Événements à venir</h2>
+                <p style="color: black;">Prochaines activités</p>
+            </div>
+
+            <div class="events-list">
+                <!-- Événement 1 -->
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="day">15</div>
+                        <div class="month">JUIN</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Tournoi Open Tennis</h3>
+                        <p>Compétition tous niveaux avec prix</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> 9h-18h</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Courts Centraux</span>
+                        </div>
+                    </div>
+                    <a href="S'inscrire.html"><button class="event-action">S'inscrire</button></a>
+                </div>
+
+                <!-- Événement 2 -->
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="day">22</div>
+                        <div class="month">JUIN</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Initiation Padel</h3>
+                        <p>Découverte bilingue anglais/français</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> 14h-16h</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Zone Padel</span>
+                        </div>
+                    </div>
+                    <a href="S'inscrire.html"><button class="event-action">S'inscrire</button></a>
+                </div>
+
+                <!-- Événement 3 -->
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="day">29</div>
+                        <div class="month">JUIN</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Soirée Badminton</h3>
+                        <p>Matchs amicaux internationaux</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> 18h-22h</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Gymnase Principal</span>
+                        </div>
+                    </div>
+                    <a href="S'inscrire.html"><button class="event-action">S'inscrire</button></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== NAVIGATION INFÉRIEURE ========== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#sports" class="nav-item">
+            <i class="fas fa-dumbbell"></i>
+            <span>Sports</span>
+        </a>
+        <a href="#events" class="nav-item">
+            <i class="fas fa-calendar"></i>
+            <span>Événements</span>
+        </a>
+        <a href="formulaire.html" class="nav-item">
+            <i class="fas fa-user-plus"></i>
+            <span>Rejoindre</span>
+        </a>
+    </nav>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

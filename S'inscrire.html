@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - FightNet</title>
+    <link rel="stylesheet" href="styles/S'inscrire.css">
+</head>
+<body>
+    <div class="page-bg">
+        <main class="card">
+            <header class="card-header">
+                <h1>Formulaire d'inscription</h1>
+                <p class="subtitle">Remplissez vos informations pour confirmer votre participation</p>
+            </header>
+
+            <!-- FORMSPREE FORM - REMPLACE L'URL PAR LA TIENNE -->
+            <form 
+                id="registerForm" 
+                class="form" 
+                action="https://formspree.io/f/mvgwbovg" 
+                method="POST"
+            >
+                <!-- Champ caché pour le sujet de l'email -->
+                <input type="hidden" name="_subject" value="Nouvelle inscription - FightNet">
+                
+                <label>Nom
+                    <input type="text" name="nom" required>
+                </label>
+
+                <label>Prénom
+                    <input type="text" name="prenom" required>
+                </label>
+
+                <label>Numéro de téléphone
+                    <input type="tel" name="telephone"  required>
+                </label>
+
+                <label>Adresse e-mail
+                    <input type="email" name="email" placeholder="exemple@gmail.com" required>
+                </label>
+
+                <fieldset class="event-choice">
+                    <legend>Choisissez l'événement :</legend>
+                    <label><input type="radio" name="evenement" value="Tournoi de raquettes" required> Tournoi Open Tennis</label>
+                    <label><input type="radio" name="evenement" value="Atelier de Taekwondo"> Initiation Padel</label>
+                    <label><input type="radio" name="evenement" value="Fitness & Cardio Challenge"> Soirée Badminton</label>
+                </fieldset>
+
+                <label class="confirm">
+                    <input type="checkbox" name="confirmation" required>
+                    Je confirme ma présence à l'événement sélectionné
+                </label>
+
+                <div class="actions">
+                    <button type="submit" class="btn primary">Envoyer</button>
+                    <button type="reset" class="btn ghost">Effacer</button>
+                </div>
+
+                <!-- Message de statut -->
+                <p id="status"></p>
+            </form>
+
+            <footer class="card-footer">
+                <small>FightNet — Les inscriptions seront envoyées à : <strong>hakeazi55@gmail.com</strong></small>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/S'inscrire.js"></script>
+</body>
+</html>
