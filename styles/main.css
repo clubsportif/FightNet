@@ -1,7 +1,7 @@
 /* ========== VARIABLES ET RESET ========== */
 :root {
     /* Palette de couleurs principale */
-    --primary: #007AFF;
+    --primary: orange;
     --primary-dark: #0056CC;
     --secondary: #5856D6;
     --accent: #FF2D55;
@@ -58,17 +58,6 @@ body {
     padding-bottom: 80px;
     position: relative;
 }
-
-#chatbot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
 
 /* ========== ANNONCE D'ENTRÉE ========== */
 /* L'annonce couvre tout l'écran et se place au-dessus de tout le contenu */
@@ -300,7 +289,7 @@ body {
 }
 
 .accent {
-    color: orange;
+    color: var(--primary);
 }
 
 .hero-description {
@@ -368,13 +357,13 @@ body {
 }
 
 .btn.primary {
-    background: orange;
+    background: var(--primary);
     color: white;
 }
 
 .btn.secondary {
     background: rgba(255, 255, 255, 0.9);
-    color: orange;
+    color: var(--text-primary);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
 }
@@ -505,7 +494,7 @@ body {
 
 .price {
     font-weight: 600;
-    color: orange;
+    color: var(--primary);
     font-size: 16px;
 }
 
@@ -559,7 +548,7 @@ body {
 }
 
 .event-date {
-    background: orange;
+    background: var(--primary);
     color: white;
     padding: 12px;
     border-radius: var(--radius-md);
@@ -610,7 +599,7 @@ body {
 }
 
 .event-action {
-    background: orange;
+    background: var(--primary);
     color: white;
     border: none;
     padding: 8px 16px;
