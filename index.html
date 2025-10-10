@@ -26,7 +26,7 @@
     <header class="app-header">
         <div class="header-content">
             <div class="logo">
-                <div class="logo-icon">🥊</div>
+                <div class="logo-icon" id="ic">🏓</div>
                 <div class="logo-text">
                     <span class="brand">FIGHT NET</span>
                     <span class="subtitle">Sports Club</span>
@@ -289,12 +289,29 @@
     </nav>
 
     <script src="js/main.js"></script>
-    <script> window.chtlConfig = { chatbotId: "2821643478" } </script>
+
+    <script>
+    // 1️⃣ Sélection du div
+    const div = document.getElementById("ic");
+
+    // 2️⃣ Liste des contenus à afficher
+    const messages = ["🏸", "🎾", "🏓"];
+
+    // 3️⃣ Variable pour suivre l’index
+    let index = 0;
+
+    // 4️⃣ Fonction pour changer le contenu
+    function changerTexte() {
+      div.textContent = messages[index];
+      index = (index + 1) % messages.length; // retourne au début après la fin
+    }
+
+    // 5️⃣ Appel automatique toutes les 2 secondes
+    setInterval(changerTexte, 2000);
+  </script>
+
+
+  <script> window.chtlConfig = { chatbotId: "2821643478" } </script>
 <script async data-id="2821643478" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
 </body>
-
 </html>
-
-
-
-
