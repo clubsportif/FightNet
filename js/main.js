@@ -12,7 +12,6 @@ class FightNetApp {
         this.setupBottomNav();
         this.setupAnimations();
         this.setupFormNavigation();
-        this.setupAnnonceEntree(); // Gestion de l'annonce d'entrée
         this.initPhoneFormatting();
     }
 
@@ -100,46 +99,6 @@ class FightNetApp {
                 });
             });
         }
-    }
-
-    // ========== CONFIGURATION DE L'ANNONCE D'ENTRÉE ==========
-    setupAnnonceEntree() {
-        const annonceOverlay = document.getElementById('annonce-entree');
-        const closeButton = document.getElementById('close-annonce');
-        
-        // Si l'annonce n'existe pas, on sort de la fonction
-        if (!annonceOverlay || !closeButton) return;
-        
-        console.log('Annonce d\'entrée initialisée'); // Debug
-        
-        // Fermer l'annonce quand on clique sur la croix
-        closeButton.addEventListener('click', () => {
-            console.log('Fermeture de l\'annonce'); // Debug
-            
-            // Animation de disparition
-            annonceOverlay.style.opacity = '0';
-            annonceOverlay.style.transform = 'scale(0.8)';
-            
-            // Cache l'annonce après l'animation
-            setTimeout(() => {
-                annonceOverlay.classList.add('hidden');
-                console.log('Annonce cachée'); // Debug
-            }, 300);
-        });
-        
-        // Optionnel: Fermer en cliquant en dehors de l'image
-        annonceOverlay.addEventListener('click', (e) => {
-            if (e.target === annonceOverlay) {
-                closeButton.click();
-            }
-        });
-        
-        // Optionnel: Fermer avec la touche Échap
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !annonceOverlay.classList.contains('hidden')) {
-                closeButton.click();
-            }
-        });
     }
 
     // ========== CONFIGURATION DE LA NAVIGATION INFÉRIEURE ==========
