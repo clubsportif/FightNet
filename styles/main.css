@@ -1,7 +1,7 @@
 /* ========== VARIABLES ET RESET ========== */
 :root {
     /* Palette de couleurs principale */
-    --primary: orange;
+    --primary: blue;
     --primary-dark: #0056CC;
     --secondary: #5856D6;
     --accent: #FF2D55;
@@ -58,88 +58,13 @@ body {
     padding-bottom: 80px;
     position: relative;
 }
-
-/* ========== ANNONCE D'ENTRÉE ========== */
-/* L'annonce couvre tout l'écran et se place au-dessus de tout le contenu */
-.annonce-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999; /* Z-index très élevé pour être au-dessus de tout */
-    backdrop-filter: blur(5px); /* Effet de flou sur le contenu derrière */
+#logo{
+    width: 120px;
+    height: 50px;
 }
-
-/* Conteneur de l'annonce avec l'image */
-.annonce-container {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    animation: scaleIn 0.3s ease-out; /* Animation d'apparition */
-}
-
-/* Animation d'apparition de l'annonce */
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Style de l'image de l'annonce */
-.annonce-image {
-    width: 100%;
-    height: auto;
-    max-height: 80vh;
-    object-fit: contain; /* Garde les proportions de l'image */
-    display: block;
-}
-
-/* Bouton de fermeture rouge */
-.close-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 40px;
-    height: 40px;
-    background: var(--danger); /* Rouge */
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 10; /* Au-dessus de l'image */
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-}
-
-/* Effets au survol du bouton fermer */
-.close-btn:hover {
-    background: #ff1a1a; /* Rouge plus foncé */
-    transform: scale(1.1);
-}
-
-.close-btn:active {
-    transform: scale(0.95);
-}
-
-/* Classe pour cacher l'annonce quand elle est fermée */
-.annonce-overlay.hidden {
-    display: none;
+#logo-footer {
+    width: 80px;
+    height: 35px;
 }
 
 /* ========== GESTION DES VIDÉOS ========== */
@@ -267,18 +192,6 @@ body {
     z-index: 1; /* Au-dessus de la vidéo et de l'overlay */
 }
 
-.welcome-badge {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-bottom: 24px;
-    backdrop-filter: blur(10px);
-}
-
 .hero-title {
     font-size: 32px;
     font-weight: 700;
@@ -379,14 +292,10 @@ body {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 8px;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .section-header p {
-    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* ========== SECTION SPORTS ========== */
@@ -439,10 +348,11 @@ body {
     color: white;
 }
 
-.sport-icon.tennis { background: var(--success); }
-.sport-icon.padel { background: var(--secondary); }
+.sport-icon.beach-tennis { background: #FF9500; }
+.sport-icon.mini-tennis { background: var(--success); }
 .sport-icon.badminton { background: var(--accent); }
 .sport-icon.pingpong { background: var(--warning); }
+.sport-icon.taekwondo { background: #8e44ad; }
 
 .sport-badge {
     background: var(--accent);
@@ -523,96 +433,115 @@ body {
     background: #ffffff;
 }
 
-.events-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 0 16px;
-}
-
-.event-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.events-announcement {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     border-radius: var(--radius-lg);
-    padding: 16px;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(10px);
-}
-
-.event-item:active {
-    background: rgba(255, 255, 255, 0.85);
-    transform: scale(0.98);
-}
-
-.event-date {
-    background: var(--primary);
-    color: white;
-    padding: 12px;
-    border-radius: var(--radius-md);
+    padding: 40px 20px;
     text-align: center;
-    min-width: 60px;
+    color: white;
+    margin: 0 16px;
 }
 
-.day {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1;
+.announcement-content {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.month {
-    font-size: 11px;
-    font-weight: 600;
+.announcement-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
     opacity: 0.9;
 }
 
-.event-details {
-    flex: 1;
-}
-
-.event-details h3 {
-    font-size: 16px;
+.announcement-content h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
     font-weight: 600;
-    margin-bottom: 4px;
 }
 
-.event-details p {
-    color: var(--text-secondary);
-    font-size: 13px;
-    margin-bottom: 8px;
-    line-height: 1.4;
+.announcement-content p {
+    font-size: 16px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
-.event-meta {
+.announcement-actions {
     display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ========== PIED DE PAGE ========== */
+.app-footer {
+    background: var(--text-primary);
+    color: white;
+    padding: 40px 16px 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-description {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+    max-width: 400px;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.footer-column ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
 }
 
-.event-meta span {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    color: var(--text-secondary);
-}
-
-.event-action {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: var(--radius-md);
+.footer-column a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
     font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
+    transition: color 0.2s ease;
 }
 
-.event-action:active {
-    background: var(--primary-dark);
-    transform: scale(0.95);
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 /* ========== NAVIGATION INFÉRIEURE ========== */
@@ -681,9 +610,22 @@ body {
         padding: 0;
     }
     
-    .events-list {
-        max-width: 600px;
-        margin: 0 auto;
+    .announcement-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .footer-logo {
+        flex: 1;
+    }
+    
+    .footer-links {
+        flex: 2;
     }
     
     .bottom-nav {
