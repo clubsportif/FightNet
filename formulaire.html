@@ -14,16 +14,16 @@
         <div class="header-content">
             <a href="index.html" class="logo-link">
                 <div class="logo">
-                    <div class="logo-icon">🥊</div>
+                    <img src="logofightnet-removebg-preview.png" alt="logo club" id="logoclub">
                     <div class="logo-text">
-                        <span class="brand">FIGHT NET</span>
+                        <span class="brand">FIGHT <span style="color:blue">NET</span></span><br>
                         <span class="subtitle">Rejoindre</span>
                     </div>
                 </div>
             </a>
-            <button class="menu-btn" onclick="history.back()">
+            <a href="index.html" class="menu-btn">
                 <i class="fas fa-arrow-left"></i>
-            </button>
+            </a>
         </div>
     </header>
 
@@ -52,7 +52,7 @@
                         </div>
                         <div class="input-group">
                             <label for="phone">Téléphone *</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="phone" placeholder="Votre numéro" required>
                         </div>
                     </div>
 
@@ -60,33 +60,216 @@
                         <label for="birthDate">Date de Naissance *</label>
                         <input type="date" id="birthDate" name="birthDate" required>
                     </div>
+
+                    <!-- Filière -->
+                    <div class="input-group">
+                        <label for="filiere">Filière *</label>
+                        <select id="filiere" name="filiere" required onchange="toggleAutreFiliere()">
+                            <option value="">Choisissez votre filière</option>
+                            <option value="DSE">DSE</option>
+                            <option value="MSL">MSL</option>
+                            <option value="AST">AST</option>
+                            <option value="2AGOS">2AGOS</option>
+                            <option value="EES">EES</option>
+                            <option value="MPAR">MPAR</option>
+                            <option value="CPSS">CPSS</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <!-- Autre Filière -->
+                    <div class="input-group" id="autreFiliereGroup" style="display: none;">
+                        <label for="autreFiliere">Précisez votre filière</label>
+                        <input type="text" id="autreFiliere" name="autreFiliere" placeholder="Votre filière">
+                    </div>
+
+                    <!-- Semestre -->
+                    <div class="input-group">
+                        <label for="semestre">Semestre *</label>
+                        <select id="semestre" name="semestre" required>
+                            <option value="">Choisissez votre semestre</option>
+                            <option value="S1">S1</option>
+                            <option value="S3">S3</option>
+                            <option value="S5">S5</option>
+                            <option value="M1">M1</option>
+                            <option value="M3">M3</option>
+                        </select>
+                    </div>
                 </div>
 
                 <!-- Sports Selection -->
                 <div class="form-section">
                     <h3>Sports et Niveaux *</h3>
-                    <p class="section-description">Choisissez vos sports et votre niveau</p>
+                    <p class="section-description">Choisissez au moins un sport et son niveau</p>
 
-                    <div class="sports-selection" id="sportsContainer">
-                        <!-- Sports will be loaded by JavaScript -->
+                    <!-- Beach Tennis -->
+                    <div class="sport-section">
+                        <div class="sport-header">
+                            <input type="checkbox" id="sport-beach-tennis" name="sport-beach-tennis" value="Beach Tennis" onchange="toggleLevels('beach-tennis')">
+                            <label for="sport-beach-tennis" class="sport-label">
+                                <div class="sport-icon" style="background: #e67e22">
+                                    <i class="fas fa-volleyball-ball"></i>
+                                </div>
+                                <div class="sport-info">
+                                    <h4>Beach Tennis</h4>
+                                    <div class="sport-description">Tennis sur sable</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="sport-levels" id="levels-beach-tennis" style="display: none;">
+                            <div class="level-option">
+                                <input type="radio" id="beach-tennis-debutant" name="level-beach-tennis" value="Débutant">
+                                <label for="beach-tennis-debutant">Débutant</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="beach-tennis-intermediaire" name="level-beach-tennis" value="Intermédiaire">
+                                <label for="beach-tennis-intermediaire">Intermédiaire</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="beach-tennis-avance" name="level-beach-tennis" value="Avancé">
+                                <label for="beach-tennis-avance">Avancé</label>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Mini Tennis -->
+                    <div class="sport-section">
+                        <div class="sport-header">
+                            <input type="checkbox" id="sport-mini-tennis" name="sport-mini-tennis" value="Mini Tennis" onchange="toggleLevels('mini-tennis')">
+                            <label for="sport-mini-tennis" class="sport-label">
+                                <div class="sport-icon" style="background: #9b59b6">
+                                    <i class="fas fa-baseball-ball"></i>
+                                </div>
+                                <div class="sport-info">
+                                    <h4>Mini Tennis</h4>
+                                    <div class="sport-description">Tennis adapté</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="sport-levels" id="levels-mini-tennis" style="display: none;">
+                            <div class="level-option">
+                                <input type="radio" id="mini-tennis-debutant" name="level-mini-tennis" value="Débutant">
+                                <label for="mini-tennis-debutant">Débutant</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="mini-tennis-intermediaire" name="level-mini-tennis" value="Intermédiaire">
+                                <label for="mini-tennis-intermediaire">Intermédiaire</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="mini-tennis-avance" name="level-mini-tennis" value="Avancé">
+                                <label for="mini-tennis-avance">Avancé</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badminton -->
+                    <div class="sport-section">
+                        <div class="sport-header">
+                            <input type="checkbox" id="sport-badminton" name="sport-badminton" value="Badminton" onchange="toggleLevels('badminton')">
+                            <label for="sport-badminton" class="sport-label">
+                                <div class="sport-icon" style="background: #2ecc71">
+                                    <i class="fas fa-feather-alt"></i>
+                                </div>
+                                <div class="sport-info">
+                                    <h4>Badminton</h4>
+                                    <div class="sport-description">Rapide et technique</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="sport-levels" id="levels-badminton" style="display: none;">
+                            <div class="level-option">
+                                <input type="radio" id="badminton-debutant" name="level-badminton" value="Débutant">
+                                <label for="badminton-debutant">Débutant</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="badminton-intermediaire" name="level-badminton" value="Intermédiaire">
+                                <label for="badminton-intermediaire">Intermédiaire</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="badminton-avance" name="level-badminton" value="Avancé">
+                                <label for="badminton-avance">Avancé</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ping-Pong -->
+                    <div class="sport-section">
+                        <div class="sport-header">
+                            <input type="checkbox" id="sport-pingpong" name="sport-pingpong" value="Ping-Pong" onchange="toggleLevels('pingpong')">
+                            <label for="sport-pingpong" class="sport-label">
+                                <div class="sport-icon" style="background: #f39c12">
+                                    <i class="fas fa-table-tennis"></i>
+                                </div>
+                                <div class="sport-info">
+                                    <h4>Ping-Pong</h4>
+                                    <div class="sport-description">Tennis de table</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="sport-levels" id="levels-pingpong" style="display: none;">
+                            <div class="level-option">
+                                <input type="radio" id="pingpong-debutant" name="level-pingpong" value="Débutant">
+                                <label for="pingpong-debutant">Débutant</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="pingpong-intermediaire" name="level-pingpong" value="Intermédiaire">
+                                <label for="pingpong-intermediaire">Intermédiaire</label>
+                            </div>
+                            <div class="level-option">
+                                <input type="radio" id="pingpong-avance" name="level-pingpong" value="Avancé">
+                                <label for="pingpong-avance">Avancé</label>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- Taekwondo -->
+                     <div class="sport-section">
+                        <div class="sport-header">
+                        <input type="checkbox" id="sport-taekwondo" name="sport-taekwondo" value="Taekwondo" onchange="toggleLevels('taekwondo')">
+                        <label for="sport-taekwondo" class="sport-label">
+                        <div class="sport-icon" style="background: #8e44ad">
+                        <i class="fas fa-fist-raised"></i>
+                 </div>
+                   <div class="sport-info">
+                       <h4>Taekwondo</h4>
+                       <div class="sport-description">art du pied et du poing</div>
+                  </div>
+        </label>
+    </div>
+                    <div class="sport-levels" id="levels-taekwondo" style="display: none;">
+                   <div class="level-option">
+                   <input type="radio" id="taekwondo-debutant" name="level-taekwondo" value="Débutant">
+                   <label for="taekwondo-debutant">Débutant</label>
+              </div>
+              <div class="level-option">
+              <input type="radio" id="taekwondo-intermediaire" name="level-taekwondo" value="Intermédiaire">
+              <label for="taekwondo-intermediaire">Intermédiaire</label>
+            </div>
+             <div class="level-option">
+            <input type="radio" id="taekwondo-avance" name="level-taekwondo" value="Avancé">
+            <label for="taekwondo-avance">Avancé</label>
+           </div>
+       </div>
+       </div>
 
                 <!-- Availability -->
                 <div class="form-section">
                     <h3>Disponibilités *</h3>
                     <div class="input-group">
-                        <input type="text" id="availability" name="availability" placeholder="Ex: Soirs en semaine, week-ends" required>
+                        <label for="availability">Fréquence d'entraînement *</label>
+                        <select id="availability" name="availability" required>
+                            <option value="">Choisissez votre fréquence</option>
+                            <option value="1 jour par semaine">1 jour par semaine</option>
+                            <option value="2 jours par semaine">2 jours par semaine</option>
+                            <option value="3 jours par semaine">3 jours par semaine</option>
+                            <option value="4 jours par semaine">4 jours par semaine</option>
+                            <option value="PLUS">PLUS</option>
+                        </select>
                     </div>
                 </div>
 
-                <!-- Summary & Submit -->
+                <!-- Submit -->
                 <div class="form-section">
-                    <h3>Résumé</h3>
-                    <div class="form-summary" id="formSummary">
-                        <p>Sélectionnez au moins un sport</p>
-                    </div>
-
                     <div class="form-actions">
                         <button type="submit" class="btn primary full-width" id="submitBtn">
                             <i class="fas fa-paper-plane"></i>
@@ -97,26 +280,6 @@
             </form>
         </div>
     </main>
-
-    <!-- Navigation -->
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-home"></i>
-            <span>Accueil</span>
-        </a>
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-dumbbell"></i>
-            <span>Sports</span>
-        </a>
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-calendar"></i>
-            <span>Événements</span>
-        </a>
-        <a href="formulaire.html" class="nav-item active">
-            <i class="fas fa-user-plus"></i>
-            <span>Rejoindre</span>
-        </a>
-    </nav>
 
     <script src="js/form.js"></script>
 </body>
