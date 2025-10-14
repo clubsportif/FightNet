@@ -352,7 +352,7 @@ body {
 .sport-icon.mini-tennis { background: var(--success); }
 .sport-icon.badminton { background: var(--accent); }
 .sport-icon.pingpong { background: var(--warning); }
-.sport-icon.taekwondo { background: #8e44ad; }
+.sport-icon.sports_de_combat { background: #8e44ad; }
 
 .sport-badge {
     background: var(--accent);
